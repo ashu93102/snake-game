@@ -36,8 +36,9 @@ while game_on:
     # Detect collision with wall.
     if (snake.segment[0].xcor() > 280 or snake.segment[0].xcor() < -280 or snake.segment[0].ycor() > 270 or
             snake.segment[0].ycor() < -280):
-        game_on = False
-        score.game_over()
+        score.reset()
+        snake.reset()
+                
 
     # Detect collision with tail.
     # Slicing [1 : ] this will check all items in list except item at 0 position.
@@ -46,7 +47,7 @@ while game_on:
         # if seg == snake.segment[0]:
         #     pass
         if snake.segment[0].distance(seg) < 10:
-            game_on = False
-            score.game_over()
+            score.reset()
+            snake.reset()
 
 screen.exitonclick()
