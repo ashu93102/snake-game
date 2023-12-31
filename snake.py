@@ -13,6 +13,7 @@ class Snake:
         super().__init__()
         self.segment = []
         self.create_snake()
+        self.head = self.segment[0]
 
     def create_snake(self):
         """Create 3 turtle and sets its color and append it into segment list"""
@@ -26,6 +27,13 @@ class Snake:
         snake.penup()
         snake.goto(pos)
         self.segment.append(snake)
+
+    def reset(self):
+        for seg in self.segment:
+            seg.goto(1000, 1000)
+        self.segment.clear()
+        self.create_snake()
+        self.head = self.segment[0]
 
     def extend(self):
         self.add_segment(self.segment[-1].position())
